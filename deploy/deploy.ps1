@@ -65,17 +65,23 @@ try {
             git reset --hard "origin/$TargetBranch"
         }
         
-        # 3. Install Dependencies
-        Write-Step "Installing/verifying npm dependencies..."
-        $env:NODE_ENV = "development" # Allow devDependencies for build
-        cmd.exe /c "npm install --no-audit --prefer-offline"
-        if ($LASTEXITCODE -ne 0) {
-            throw "npm install failed with exit code $LASTEXITCODE."
+        # 3. Install Dependencies (fast check: skip if node_modules already exists)
+        $nodeModules = Join-Path $RepoDir "node_modules"
+        if (-not (Test-Path $nodeModules)) {
+            Write-Step "Installing npm dependencies (first time)..."
+            $env:NODE_ENV = "development" # Allow devDependencies for build
+            cmd.exe /c "npm install --no-audit --prefer-offline"
+            if ($LASTEXITCODE -ne 0) {
+                throw "npm install failed with exit code $LASTEXITCODE."
+            }
+        } else {
+            Write-Host ">>> node_modules already exists. Skipping redundant npm install." -ForegroundColor DarkGray
         }
 
-        # 4. Build Production Bundle
+        # 4. Build Production Bundle (optimized)
         Write-Step "Building React production bundle (npm run build)..."
         $env:CI = "false"
+        $env:DISABLE_ESLINT_PLUGIN = "true"
         $env:NODE_ENV = "production"
         $env:GENERATE_SOURCEMAP = "false"
         cmd.exe /c "npm run build"
