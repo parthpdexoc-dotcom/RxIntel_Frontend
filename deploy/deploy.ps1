@@ -17,7 +17,10 @@ param(
     [string]$IisSitePath = "C:\inetpub\wwwroot\RxIntel_UI",
 
     [Parameter(Mandatory = $false)]
-    [string]$RepoDir = $PSScriptRoot + "\.."
+    [string]$RepoDir = $PSScriptRoot + "\..",
+
+    [Parameter(Mandatory = $false)]
+    [switch]$SkipGitPull = $false
 )
 
 $ErrorActionPreference = "Stop"
@@ -53,13 +56,14 @@ try {
         New-Item -ItemType Directory -Path $IisSitePath -Force | Out-Null
     }
 
-    # 2. Update Source from Git
-    Write-Step "Updating repository working tree to latest '$TargetBranch'..."
     Push-Location $RepoDir
     try {
-        git fetch origin $TargetBranch
-        git checkout $TargetBranch
-        git reset --hard "origin/$TargetBranch"
+        if (-not $SkipGitPull) {
+            Write-Step "Updating repository working tree to latest '$TargetBranch'..."
+            git fetch origin $TargetBranch
+            git checkout $TargetBranch
+            git reset --hard "origin/$TargetBranch"
+        }
         
         # 3. Install Dependencies
         Write-Step "Installing/verifying npm dependencies..."

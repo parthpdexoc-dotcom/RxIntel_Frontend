@@ -1,0 +1,20 @@
+name: Deploy Frontend to IIS
+
+on:
+  push:
+    branches:
+      - develop
+      - Develop
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: [self-hosted, windows]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Execute Deployment
+        shell: powershell
+        run: .\deploy\deploy.ps1 -SkipGitPull
