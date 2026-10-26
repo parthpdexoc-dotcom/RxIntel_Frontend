@@ -1,0 +1,199 @@
+/* Insurance-specific — shared shell/table in styles/pageCardTheme.css */
+
+/* Table column widths */
+.insurance-table .custom-table th:nth-child(1),
+.insurance-table .custom-table td:nth-child(1) {
+  width: 60px;
+}
+
+.insurance-table .custom-table th:nth-child(2),
+.insurance-table .custom-table td:nth-child(2) {
+  width: 35%;
+}
+
+.insurance-table .custom-table th:nth-child(3),
+.insurance-table .custom-table td:nth-child(3) {
+  width: 20%;
+}
+
+.insurance-table .custom-table th:nth-child(4),
+.insurance-table .custom-table td:nth-child(4) {
+  width: 22%;
+}
+
+.insurance-table .custom-table th:last-child,
+.insurance-table .custom-table td:last-child {
+  width: 120px;
+}
+
+/* Modal shell: styles/modalTheme.css */
+
+/* GRID */
+.insurance-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 14px;
+  row-gap: 11px;
+}
+
+/* ERROR */
+.error-text {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.error-input {
+  border: 1px solid #e74c3c !important;
+  outline: none;
+}
+
+.insurance-selected-panel {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+  background: #fafbfc;
+}
+
+.insurance-selected-title {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #12233f;
+}
+
+.insurance-selected-empty {
+  margin: 0;
+  font-size: 13px;
+  color: #777;
+}
+
+.insurance-selected-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.insurance-selected-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #e9edf3;
+  color: #2b2b2b;
+  font-size: 12px;
+  line-height: 1;
+  gap: 6px;
+}
+
+.insurance-selected-chip-remove {
+  border: none;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0;
+}
+
+.insurance-modal-form--link {
+  width: min(960px, 95vw);
+}
+
+.insurance-link-picker-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.insurance-link-picker-row .form-field,
+.insurance-link-picker-row .form-date-field {
+  flex: 1 1 180px;
+  min-width: 160px;
+  margin: 0;
+}
+
+.insurance-link-picker-row .common-btn {
+  flex: 0 0 auto;
+  height: var(--form-control-height);
+  min-height: var(--form-control-height);
+  padding: 0 18px;
+  margin-bottom: 0;
+}
+
+.insurance-link-mappings-table {
+  margin-top: 8px;
+}
+
+.insurance-link-mappings-table .custom-table {
+  table-layout: fixed;
+  width: 100%;
+  font-size: 13px;
+}
+
+.insurance-link-mappings-table .custom-table th,
+.insurance-link-mappings-table .custom-table td {
+  padding: 10px 12px;
+  vertical-align: middle;
+}
+
+.insurance-link-mappings-table .custom-table th:nth-child(1),
+.insurance-link-mappings-table .custom-table td:nth-child(1) {
+  width: 6%;
+  min-width: 48px;
+  text-align: center;
+}
+
+.insurance-link-mappings-table .custom-table th:nth-child(2),
+.insurance-link-mappings-table .custom-table td:nth-child(2) {
+  width: 34%;
+  text-align: left;
+}
+
+.insurance-link-mappings-table .custom-table th:nth-child(3),
+.insurance-link-mappings-table .custom-table td:nth-child(3) {
+  width: 22%;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.insurance-link-mappings-table .custom-table th:nth-child(4),
+.insurance-link-mappings-table .custom-table td:nth-child(4) {
+  width: 22%;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.insurance-link-mappings-table .custom-table th:nth-child(5),
+.insurance-link-mappings-table .custom-table td:nth-child(5) {
+  width: 16%;
+  min-width: 88px;
+  text-align: center;
+}
+
+.insurance-link-mappings-table .custom-table .actions-cell {
+  text-align: center;
+}
+
+.insurance-link-empty {
+  margin: 0;
+  font-size: 13px;
+  color: #667085;
+}
+
+@media (max-width: 720px) {
+  .insurance-link-picker-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .insurance-link-picker-row .common-btn {
+    width: 100%;
+  }
+}

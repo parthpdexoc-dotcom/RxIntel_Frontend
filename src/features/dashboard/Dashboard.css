@@ -1,0 +1,14 @@
+/* Home Dashboard page-only overrides — shared UI in styles/dashboardTheme.css */
+
+.dashboard-card.page-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 560px) {
+  .dashboard-card.page-card {
+    padding: 16px 14px 14px;
+  }
+}

@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# Gogs Git Hook: post-receive (Frontend)
+# Location in Gogs: <repository>.git/hooks/post-receive
+# Or paste in: Gogs Web UI -> Repository Settings -> Git Hooks -> Post-Receive
+# ==============================================================================
+
+# The branch that triggers automated deployment (e.g. DEVELOP or master)
+TARGET_BRANCH="DEVELOP"
+
+# Absolute path to the frontend deploy.ps1 script on the Windows Server
+DEPLOY_SCRIPT="F:/Projects/RX_INTEL_NEW/RxIntel_Frontend/deploy/deploy.ps1"
+
+# Target live IIS deployment directory
+IIS_SITE_PATH="C:/inetpub/wwwroot/RxIntel_UI"
+
+echo ""
+echo "=========================================================="
+echo " [Gogs CI/CD] Processing Post-Receive Hook (Frontend)..."
+echo "=========================================================="
+
+while read oldrev newrev refname
+do
+    # Extract branch name from ref (e.g., refs/heads/DEVELOP -> DEVELOP)
+    branch=$(git rev-parse --symbolic --abbrev-ref "$refname")
+
+    echo " [Gogs CI/CD] Push received on branch: '$branch'"
+
+    if [ "$branch" = "$TARGET_BRANCH" ]; then
+        echo " [Gogs CI/CD] Branch matches '$TARGET_BRANCH'. Triggering automated build & IIS deploy..."
+        
+        # Execute PowerShell deployment script with execution policy bypass
+        powershell.exe -NoProfile -ExecutionPolicy Bypass -File "$DEPLOY_SCRIPT" \
+            -TargetBranch "$TARGET_BRANCH" \
+            -IisSitePath "$IIS_SITE_PATH"
+        
+        status=$?
+        if [ $status -eq 0 ]; then
+            echo " [Gogs CI/CD] Frontend deployment completed successfully!"
+        else
+            echo " [Gogs CI/CD] Frontend deployment FAILED with exit code: $status"
+            exit $status
+        fi
+    else
+        echo " [Gogs CI/CD] Push was for '$branch', not '$TARGET_BRANCH'. Skipping auto-deployment."
+    fi
+done
+
+exit 0

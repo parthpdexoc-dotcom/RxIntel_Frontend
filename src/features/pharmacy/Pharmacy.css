@@ -1,0 +1,298 @@
+/* Pharmacy-specific — shared shell/table styles live in styles/pageCardTheme.css */
+
+/* Separate Active / Inactive pills (not one fused control) */
+.pharmacy-status-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.pharmacy-page .status-btns button,
+.pharmacy-status-toggle button {
+  margin-left: 0 !important;
+  border-radius: 999px !important;
+  box-shadow: none !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  min-height: 36px;
+}
+
+.pharmacy-page .pharmacy-status-toggle .common-btn.status.active {
+  background: #d4f3e3;
+  color: #0f5132;
+  border: 1px solid #b7e4cd !important;
+  cursor: pointer;
+  padding: 8px 18px;
+}
+
+.pharmacy-page .pharmacy-status-toggle .common-btn.status.inactive {
+  background: #fee2e2;
+  color: #b42318;
+  border: 1px solid #fecaca !important;
+  cursor: pointer;
+  padding: 8px 18px;
+}
+
+.pharmacy-page .pharmacy-status-toggle .status-filter-plain {
+  background: #fff;
+  border: 1px solid #c5ced9 !important;
+  color: #12233f;
+  padding: 8px 18px;
+}
+
+.pharmacy-page .pharmacy-status-toggle .status-filter-plain:hover:not(:disabled) {
+  background: #f8fafc;
+}
+
+.pharmacy-cell-strong {
+  font-weight: 500;
+  color: #0f172a;
+  font-size: 13px;
+}
+
+.pharmacy-cell-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.pharmacy-cell-icon {
+  font-size: 18px !important;
+}
+
+.pharmacy-cell-icon--phone {
+  color: #2f9f6e;
+}
+
+.pharmacy-cell-icon--email {
+  color: #3d6fe5;
+}
+
+/* Modal overlay / shell: styles/modalTheme.css (.pharmacy-modal-form width preset there) */
+
+/* Pharmacy modal: 3 columns per row (replaces pharmacy-grid-4 in modal) */
+.pharmacy-modal-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 14px;
+  row-gap: 11px;
+}
+
+.pharmacy-field-span-3 {
+  grid-column: 1 / -1;
+}
+
+/* Address row: full width of modal grid, two equal columns inside */
+.pharmacy-field-span-3.pharmacy-grid-2 {
+  column-gap: 14px;
+}
+
+.pharmacy-phone-email-pair {
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 14px;
+}
+
+.pharmacy-grid-spacer {
+  min-height: 1px;
+  pointer-events: none;
+}
+
+.pharmacy-modal-form .form-field label {
+  display: inline-block;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+/* State, Status, and other modal selects — same custom arrow */
+.pharmacy-modal-form .form-field-custom-select-trigger {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.pharmacy-modal-form .form-field select::-ms-expand {
+  display: none;
+}
+
+/* Date fields — align with text inputs; room for calendar icon */
+.pharmacy-modal-form .form-date-field .MuiPickersOutlinedInput-root,
+.pharmacy-modal-form .form-date-field .MuiOutlinedInput-root {
+  height: 32px;
+  min-height: 32px;
+  border-radius: 4px;
+  font-size: 13px;
+  padding: 0 6px 0 8px;
+  box-sizing: border-box;
+}
+
+.pharmacy-modal-form .form-date-field .MuiPickersSectionList-root {
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.35;
+  flex: 1;
+  min-width: 0;
+}
+
+.pharmacy-modal-form .form-date-field .MuiIconButton-root {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  margin-right: 2px;
+  flex-shrink: 0;
+}
+
+/* GRID */
+.pharmacy-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 14px;
+  row-gap: 11px;
+}
+
+.pharmacy-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 14px;
+  row-gap: 11px;
+}
+
+.pharmacy-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 14px;
+  row-gap: 11px;
+}
+
+.pharmacy-full {
+  margin-top: 10px;
+}
+
+.error-text {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.error-input {
+  border: 1px solid #e74c3c !important;
+  outline: none;
+}
+
+.pharmacy-upload-input-wrap {
+  position: relative;
+}
+
+.pharmacy-upload-field input[type="text"] {
+  padding-right: 34px;
+}
+
+.pharmacy-upload-field .pharmacy-upload-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.pharmacy-upload-field .pharmacy-upload-btn:hover {
+  color: #15803d;
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.pharmacy-upload-name {
+  color: #667085;
+  font-size: 11px;
+  margin-top: 3px;
+  word-break: break-all;
+}
+
+.upload-file-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 6px;
+  padding-right: 15px;
+}
+
+.upload-file-preview__name {
+  flex: 1;
+  min-width: 0;
+  color: #667085;
+  font-size: 11px;
+  line-height: 1.3;
+  word-break: break-all;
+}
+
+.upload-file-preview__actions {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  gap: 4px;
+  margin-top: 0;
+}
+
+.upload-file-preview__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1px solid #d0d5dd;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.upload-file-preview__btn--view {
+  color: #2563eb;
+}
+
+.upload-file-preview__btn--download {
+  color: #15803d;
+}
+
+.upload-file-preview__btn--remove {
+  color: #dc2626;
+}
+
+.upload-file-preview__btn--view:hover {
+  border-color: #2563eb;
+  background: rgba(37, 99, 235, 0.08);
+}
+
+.upload-file-preview__btn--download:hover {
+  border-color: #15803d;
+  background: rgba(34, 197, 94, 0.08);
+}
+
+.upload-file-preview__btn--remove:hover {
+  border-color: #dc2626;
+  background: rgba(220, 38, 38, 0.08);
+}

@@ -1,0 +1,126 @@
+/* Pharmacy Wholesaler-specific — shared shell/table in styles/pageCardTheme.css */
+
+.pw-top-toolbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.pw-picker-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.pw-wholesaler-select-wrap {
+  flex: 1;
+  min-width: 260px;
+}
+
+.pw-wholesaler-select-wrap .MuiFormControl-root {
+  margin: 0;
+}
+
+.pw-wholesaler-select-wrap .MuiOutlinedInput-root {
+  min-height: var(--page-toolbar-btn-height, 36px);
+  height: var(--page-toolbar-btn-height, 36px);
+  box-sizing: border-box;
+  align-items: center;
+  border-radius: var(--page-toolbar-radius, 8px);
+  background: #fff;
+}
+
+.pw-wholesaler-select-wrap .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #66c285;
+}
+
+.pw-wholesaler-select-wrap .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #2c8a9b;
+}
+
+.pw-wholesaler-select-wrap .MuiOutlinedInput-input,
+.pw-wholesaler-select-wrap .MuiSelect-select {
+  padding: 0 !important;
+  min-height: auto !important;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  font-size: var(--page-toolbar-font-size, 13px);
+}
+
+.pw-wholesaler-select-wrap .MuiAutocomplete-inputRoot {
+  flex-wrap: nowrap;
+  overflow: hidden;
+  min-height: var(--page-toolbar-btn-height, 36px) !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-left: 9px !important;
+  padding-right: 39px !important;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.pw-wholesaler-select-wrap .MuiAutocomplete-tag {
+  height: 24px;
+  margin: 0 4px 0 0 !important;
+  max-width: 150px;
+  background: #e8f8ef;
+  color: #0f5132;
+}
+
+.pw-wholesaler-select-wrap .MuiAutocomplete-tag .MuiChip-label {
+  font-size: 12px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.pw-wholesaler-select-wrap .MuiAutocomplete-input {
+  min-width: 24px !important;
+  width: 24px !important;
+  padding: 0 !important;
+}
+
+.pw-wholesaler-select-wrap .MuiInputLabel-outlined {
+  font-size: var(--page-toolbar-font-size, 13px);
+  color: #7d8a99;
+}
+
+/* Match MUI small outlined label position for ~36px control height */
+.pw-wholesaler-select-wrap .MuiInputLabel-outlined:not(.MuiInputLabel-shrink) {
+  transform: translate(14px, 9px) scale(1);
+}
+
+.pw-wholesaler-select-wrap .MuiInputLabel-outlined.MuiInputLabel-shrink {
+  transform: translate(14px, -9px) scale(0.75);
+}
+
+.pw-wholesaler-select-wrap .MuiInputLabel-outlined.Mui-focused {
+  color: #2c8a9b;
+}
+
+.pw-banner {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #fef3f2;
+  color: #b42318;
+  font-size: 14px;
+  margin-bottom: 16px;
+  border: 1px solid #fecdca;
+}
+
+.pw-table-wrap {
+  margin-bottom: 8px;
+}
+
+.pw-page .pw-picker-row .common-btn.primary {
+  min-height: var(--page-toolbar-btn-height, 36px);
+}
+
+.pw-page .pw-picker-row .common-btn.primary.disabled,
+.pw-page .pw-picker-row .common-btn.primary:disabled {
+  opacity: 0.6;
+}

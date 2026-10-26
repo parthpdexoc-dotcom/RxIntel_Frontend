@@ -1,0 +1,163 @@
+/* Wholesaler Field Mapping — shared shell/table in styles/pageCardTheme.css */
+
+.wfm-top-toolbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.wfm-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Modal shell: styles/modalTheme.css */
+
+.wfm-modal-form--edit {
+  width: 1020px;
+  max-width: calc(100vw - 48px);
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.wfm-modal-form--edit .wfm-modal-header {
+  margin-bottom: 24px;
+}
+
+.wfm-modal-form--edit .wfm-modal-header h2.common-header {
+  margin: 0;
+  line-height: 1.25;
+  color: #1a2b48;
+  font-weight: 700;
+}
+
+.wfm-modal-form--edit .wfm-modal-body {
+  margin-bottom: 0;
+}
+
+.wfm-modal-form--edit .wfm-modal-body--edit-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: min(520px, calc(90vh - 220px));
+  overflow-y: auto;
+  margin-bottom: 0;
+  padding-right: 4px;
+}
+
+.wfm-modal-form--edit .wfm-edit-footer {
+  border-top: 1px solid #eaecf0;
+  padding: 12px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.wfm-modal-form--edit .wfm-edit-footer .wfm-modal-actions {
+  margin-top: 0;
+  width: 100%;
+}
+
+.wfm-edit-error-message {
+  margin: 0 auto 0 0;
+  color: #c0392b;
+  font-size: 13px;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.wfm-edit-loading {
+  margin: 24px 0;
+  text-align: center;
+  color: #7d8a99;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.wfm-required-star {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.wfm-modal-form--edit .custom-table {
+  font-size: 13px;
+}
+
+.wfm-modal-form--edit .custom-table th {
+  padding: 8px 10px;
+}
+
+.wfm-modal-form--edit .custom-table td {
+  padding: 6px 10px;
+  line-height: 1.35;
+  vertical-align: middle;
+}
+
+.wfm-modal-form--edit .wfm-source-select {
+  min-width: 160px;
+}
+
+.wfm-source-select {
+  width: 100%;
+  min-width: 200px;
+  height: 32px;
+  min-height: 32px;
+  max-height: 32px;
+  padding: 0 32px 0 8px;
+  border: 1px solid #d0d5dd;
+  border-radius: 4px;
+  background-color: #fff;
+  background-image: none;
+  font-size: 13px;
+  line-height: 1.35;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.wfm-upload-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wfm-upload-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #344054;
+}
+
+.wfm-upload-input {
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  padding: 8px;
+  background: #fff;
+}
+
+.wfm-upload-file-name {
+  font-size: 12px;
+  color: #667085;
+}
+
+@media (max-width: 900px) {
+  .wfm-header-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .wfm-modal-form,
+  .wfm-modal-form--edit {
+    width: 100%;
+    max-width: calc(100vw - 24px);
+    padding: 16px;
+  }
+
+  .wfm-modal-actions {
+    flex-wrap: wrap;
+  }
+}

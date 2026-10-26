@@ -1,0 +1,25 @@
+/* Pharmacy Software-specific — shared shell/table in styles/pageCardTheme.css */
+
+.pharmacy-software-table .custom-table th:nth-child(1),
+.pharmacy-software-table .custom-table td:nth-child(1) {
+  width: 60px;
+}
+
+.pharmacy-software-table .custom-table th:nth-child(2),
+.pharmacy-software-table .custom-table td:nth-child(2) {
+  width: 70%;
+}
+
+.pharmacy-software-table .custom-table th:last-child,
+.pharmacy-software-table .custom-table td:last-child {
+  width: 140px;
+}
+
+/* Modal shell: styles/modalTheme.css */
+
+.pharmacy-software-grid-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 11px;
+}
+

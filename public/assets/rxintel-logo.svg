@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="RxIntel">
+  <defs>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#66c285" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <circle cx="64" cy="64" r="54" fill="#ffffff" filter="url(#softShadow)"/>
+  <circle cx="64" cy="64" r="54" fill="#ffffff" stroke="rgba(102,194,133,0.18)" stroke-width="2"/>
+  <!-- green medical plus -->
+  <rect x="52" y="28" width="24" height="72" rx="8" fill="#66c285"/>
+  <rect x="28" y="52" width="72" height="24" rx="8" fill="#66c285"/>
+</svg>

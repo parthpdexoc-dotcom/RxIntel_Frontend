@@ -1,0 +1,124 @@
+.list-pagination {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.list-pagination-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.list-pagination-summary {
+  font-size: 13px;
+  color: #667085;
+}
+
+.list-pagination-size {
+  min-width: 64px !important;
+  height: 32px !important;
+  font-size: 13px !important;
+  border-radius: 8px !important;
+  background: #fff !important;
+}
+
+.list-pagination-size .MuiSelect-select {
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+.list-pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.list-pagination-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #344054;
+  background: #fff;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.list-pagination-nav:hover:not(:disabled) {
+  background: #f9fafb;
+  border-color: #98a2b3;
+}
+
+.list-pagination-nav:disabled {
+  color: #98a2b3;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.list-pagination-nav-icon {
+  font-size: 18px !important;
+}
+
+.list-pagination-pages {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.list-pagination-page {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #344054;
+  background: #fff;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.list-pagination-page:hover:not(:disabled):not(.is-active) {
+  background: #f9fafb;
+  border-color: #98a2b3;
+}
+
+.list-pagination-page.is-active {
+  background: #163372;
+  border-color: #163372;
+  color: #fff;
+}
+
+.list-pagination-page:disabled {
+  cursor: default;
+}
+
+.list-pagination-ellipsis {
+  min-width: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: #667085;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .list-pagination {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .list-pagination-controls {
+    justify-content: center;
+  }
+}

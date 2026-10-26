@@ -1,0 +1,384 @@
+/* Shared list-page shell (Pharmacy, Wholesaler, Billing, Purchase, etc.) */
+
+:root {
+  /* Search field — aligned with FormField (--form-control-height) */
+  --page-toolbar-height: 32px;
+  --page-toolbar-font-size: 13px;
+  --page-toolbar-radius: 8px;
+  /* Primary Add / header actions — slightly taller than search */
+  --page-toolbar-btn-height: 36px;
+  --page-toolbar-btn-font-size: 14px;
+  --page-toolbar-btn-padding-y: 7px;
+  --page-toolbar-btn-padding-x: 16px;
+}
+
+.page-shell {
+  padding: 4px 4px 12px;
+  min-height: 100%;
+  font-family: "Plus Jakarta Sans", "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.page-shell .custom-table,
+.page-shell .custom-table th,
+.page-shell .custom-table td,
+.page-shell .common-btn,
+.page-shell .search-input,
+.page-shell .page-tab,
+.page-shell .list-pagination {
+  font-family: inherit;
+}
+
+.page-shell .card.page-card,
+.page-card {
+  background: #ffffff;
+  padding: 22px 24px 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(215, 222, 232, 0.7);
+  box-shadow: 0 12px 32px rgba(26, 43, 72, 0.08);
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.page-shell .card-header.page-card-header,
+.page-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.page-card-title-block {
+  min-width: 0;
+}
+
+.page-card-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.page-card-title-leading {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.page-card-title-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #e8f8ef;
+  flex-shrink: 0;
+}
+
+.page-card-title-icon {
+  color: #2f9f6e;
+  font-size: 22px !important;
+}
+
+.page-shell .page-card-title.common-header {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #12233f;
+  line-height: 1.25;
+}
+
+.page-card-subtitle {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #5b6777;
+  line-height: 1.35;
+}
+
+.page-card-actions {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.page-shell .page-card-actions .common-btn.primary,
+.page-shell .page-primary-cta .common-btn.primary,
+.page-shell .page-primary-cta.common-btn.primary,
+.page-shell .page-card-filters .common-btn.primary {
+  background: #2f9f6e;
+  color: #fff;
+  border-radius: var(--page-toolbar-radius);
+  padding: var(--page-toolbar-btn-padding-y) var(--page-toolbar-btn-padding-x);
+  min-height: var(--page-toolbar-btn-height);
+  box-sizing: border-box;
+  font-size: var(--page-toolbar-btn-font-size);
+  font-weight: 600;
+  line-height: 1.35;
+  box-shadow: 0 3px 8px rgba(47, 159, 110, 0.22);
+}
+
+.page-shell .page-card-actions .common-btn.primary:hover:not(:disabled),
+.page-shell .page-primary-cta .common-btn.primary:hover:not(:disabled),
+.page-shell .page-primary-cta.common-btn.primary:hover:not(:disabled),
+.page-shell .page-card-filters .common-btn.primary:hover:not(:disabled) {
+  background: #37ab79;
+}
+
+.page-card-filters {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.page-card-filters .search-input-wrap {
+  flex: 1;
+  max-width: 380px;
+  min-width: 220px;
+}
+
+.page-shell .page-card-filters .search-input-wrap {
+  align-items: center;
+}
+
+.page-card-filters-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.page-table-wrap {
+  margin-top: 4px;
+}
+
+/* Table / grid — shared; header weight kept lighter than body emphasis */
+.page-shell .custom-table {
+  font-size: 14px;
+}
+
+.page-shell .custom-table thead,
+.page-shell .custom-table th {
+  background: #e8eef6;
+}
+
+.page-shell .custom-table th {
+  color: #12233f;
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 11px 12px;
+  border-bottom-color: #cfd8e3;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+.page-shell .custom-table tbody tr:nth-child(even) td {
+  background: #fafcfd;
+}
+
+.page-shell .custom-table td {
+  color: #0f172a;
+  font-size: 13px;
+  padding: 10px 12px;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.page-shell .custom-table .status {
+  font-size: 13px;
+  padding: 5px 12px;
+  font-weight: 600;
+}
+
+.page-shell .action-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  border-color: #cfd8e3;
+}
+
+.page-shell .action-btn svg {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.page-shell .action-btn--edit {
+  color: #3d6fe5;
+  background: #eef3ff;
+}
+
+.page-shell .action-btn--delete {
+  color: #e11d48;
+  background: #fef2f2;
+}
+
+.page-shell .action-btn--more {
+  color: #344054;
+  background: #f3f4f6;
+}
+
+.page-shell .list-pagination {
+  margin-top: 18px;
+}
+
+.page-shell .list-pagination-summary,
+.page-shell .list-pagination-nav {
+  font-size: 14px;
+}
+
+.page-shell .list-pagination-page {
+  min-width: 36px;
+  height: 36px;
+  font-size: 14px;
+}
+
+.page-shell .list-pagination-page.is-active {
+  background: #3d6fe5 !important;
+  border-color: #3d6fe5 !important;
+  color: #fff !important;
+  border-radius: 8px;
+}
+
+/* Expandable import-error tables inside themed pages */
+.page-shell .import-error-table-shell {
+  border: 1px solid rgba(215, 222, 232, 0.9);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.page-shell .import-error-table {
+  font-size: 14px;
+}
+
+.page-shell .import-error-table thead {
+  background: #e8eef6;
+}
+
+.page-shell .import-error-table th {
+  color: #12233f;
+  font-size: 13.5px;
+  font-weight: 700;
+  padding: 11px 12px;
+  border-bottom-color: #cfd8e3;
+  line-height: 1.3;
+}
+
+.page-shell .import-error-table td {
+  color: #0f172a;
+  font-size: 13px;
+  padding: 10px 12px;
+  font-weight: 500;
+  line-height: 1.35;
+  border-bottom-color: #eef2f6;
+}
+
+.page-shell .import-error-parent-row:nth-child(even) {
+  background: #fafcfd;
+}
+
+.page-shell .import-error-filename {
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.page-shell .import-error-expand-btn:hover {
+  background: #eef8f3;
+  color: #2f9f6e;
+}
+
+.page-shell .import-error-detail-row > td,
+.page-shell .import-error-detail-panel {
+  background: #f3f7fb;
+}
+
+/* Shared tab strip (Billing / Purchase) */
+.page-tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid #eaecf0;
+  margin-bottom: 16px;
+}
+
+.page-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 12px;
+  border: none;
+  background: transparent;
+  color: #667085;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.page-tab--active {
+  color: #2c8a9b;
+  font-weight: 600;
+}
+
+.page-tab--active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: #2f9f6e;
+}
+
+.page-tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #d92d20;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .page-shell {
+    padding: 0 0 8px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .page-shell .card.page-card,
+  .page-card {
+    padding: 14px 12px 12px;
+    border-radius: 14px;
+  }
+
+  .page-shell .page-card-title.common-header {
+    font-size: 1.15rem;
+  }
+
+  .page-card-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .page-card-title-badge {
+    width: 36px;
+    height: 36px;
+  }
+
+  .page-card-title-icon {
+    font-size: 20px !important;
+  }
+}

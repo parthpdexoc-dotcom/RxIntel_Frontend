@@ -1,0 +1,1024 @@
+.home-layout,
+.home-layout * {
+  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+}
+
+/* Sidebar active = blue → mint (design); accents share login greens */
+.home-layout {
+  --rx-green: #66c285;
+  --rx-green-mid: #4db89a;
+  --rx-teal: #408a91;
+  --rx-teal-deep: #2c8a9b;
+  --rx-menu-blue: #3d6fe5;
+  --rx-menu-mint: #7ad4b5;
+  --rx-navy: #1a2b48;
+  --rx-muted: #7d8a99;
+  --rx-border: #d7dee8;
+  --rx-hover-bg: #eef3ff;
+  --rx-hover-bg-strong: #e2ebff;
+  --rx-accent: #3d6fe5;
+  --rx-active-gradient: linear-gradient(90deg, #3d6fe5 0%, #4a9fd4 48%, #6fc9b0 78%, #7ad4b5 100%);
+  --rx-active-gradient-hover: linear-gradient(90deg, #4a7df0 0%, #58aad9 48%, #7dd4bb 78%, #8ce0c2 100%);
+  --rx-active-shadow: 0 2px 10px rgba(61, 111, 229, 0.28);
+  --rx-page-bg: #eef4fa;
+}
+
+body {
+  margin: 0;
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--rx-page-bg);
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 240px;
+  background: #ffffff;
+  border-right: 1px solid var(--rx-border);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+  flex-shrink: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.logo {
+  flex-shrink: 0;
+  margin-bottom: 28px;
+}
+
+/* MENU */
+.menu {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Parent Menu Item */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--rx-navy);
+  transition: 0.2s;
+}
+
+.menu-item:hover:not(.active) {
+  background: var(--rx-hover-bg);
+  color: var(--rx-accent);
+}
+
+.menu-item.active {
+  background: var(--rx-active-gradient);
+  color: #fff;
+  box-shadow: var(--rx-active-shadow);
+}
+
+.menu-item.active:hover {
+  background: var(--rx-active-gradient-hover);
+  color: #fff;
+}
+
+.menu-item.active .icon,
+.menu-item.active:hover .icon {
+  color: #fff;
+}
+
+.icon {
+  min-width: 18px;
+}
+
+/* RxIntel dropdown arrow (expanded sidebar) */
+.menu-dropdown-arrow {
+  margin-left: auto;
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-dropdown-arrow.expanded {
+  transform: rotate(180deg);
+}
+
+.dropdown-arrow-icon {
+  font-size: 11px;
+  color: var(--rx-muted);
+  transition: color 0.2s ease;
+}
+
+.menu-item.active .dropdown-arrow-icon {
+  color: #fff;
+}
+
+.menu-item.parent-active .dropdown-arrow-icon {
+  color: var(--rx-accent);
+}
+
+.menu-item.has-dropdown .menu-toggle-icon {
+  display: none;
+}
+
+/* Two-Level Active Styling: Parent Highlight */
+.menu-item.parent-active {
+  background: var(--rx-hover-bg);
+  color: var(--rx-accent);
+  font-weight: 600;
+  border-left: 3.5px solid var(--rx-menu-blue);
+  border-radius: 4px 10px 10px 4px;
+  padding-left: 9px;
+}
+
+.menu-item.parent-active .icon {
+  color: var(--rx-accent);
+}
+
+.menu-item.parent-active:hover {
+  background: var(--rx-hover-bg-strong);
+  color: var(--rx-accent);
+}
+
+/* RxIntel parent + submenu group (seamlessly blends with sidebar white background) */
+.rxintel-group {
+  margin-top: 8px;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.rxintel-group.open {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.rxintel-group.open .menu-item:hover:not(.active):not(.parent-active) {
+  background: var(--rx-hover-bg);
+  color: var(--rx-accent);
+}
+
+/* SUBMENU - Indented clean tree layout directly on sidebar */
+.submenu {
+  margin-top: 4px;
+  margin-left: 18px;
+  padding-left: 12px;
+  border-left: 2px solid #d4ebe3;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: transparent;
+}
+
+.submenu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  font-size: 14px;
+  color: var(--rx-navy);
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  background: transparent;
+  user-select: none;
+}
+
+.submenu-item:hover:not(.active) {
+  background: var(--rx-hover-bg);
+  color: var(--rx-accent);
+}
+
+.submenu-item:hover:not(.active) .submenu-icon {
+  color: var(--rx-accent);
+}
+
+/* Two-Level Active Styling: Sub-Item Focused Accent */
+.submenu-item.active {
+  background: var(--rx-active-gradient);
+  color: #ffffff !important;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 9px 12px;
+  box-shadow: var(--rx-active-shadow);
+}
+
+.submenu-item.active .submenu-label,
+.submenu-item.active .submenu-icon,
+.submenu-item.active svg {
+  color: #ffffff !important;
+}
+
+.submenu-item.active:hover {
+  background: var(--rx-active-gradient-hover);
+  color: #ffffff !important;
+}
+
+.submenu-item.active:hover .submenu-icon,
+.submenu-item.active:hover svg {
+  color: #ffffff !important;
+}
+
+.submenu-icon {
+  font-size: 14px;
+  min-width: 16px;
+  color: var(--rx-muted);
+  transition: color 0.2s ease;
+}
+
+/* LOGOUT */
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #ff4d4f;
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.logout:hover {
+  background: #fff1f0;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* NAVBAR */
+.navbar {
+  height: 70px;
+  background: #fff;
+  border-bottom: 1px solid var(--rx-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
+}
+
+.search {
+  position: relative;
+}
+
+.search input {
+  padding: 10px 90px 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 280px;
+}
+
+.shortcut {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  font-size: 12px;
+  color: #888;
+}
+
+.navbar-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #111827;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.navbar-menu-toggle:hover {
+  background: var(--rx-hover-bg);
+  color: var(--rx-teal-deep);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: auto;
+}
+
+.nav-icon {
+  font-size: 18px;
+  cursor: pointer;
+  color: #555;
+}
+
+.profile-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile-dropdown {
+  position: absolute;
+  right: 0;
+  top: 60px;
+  width: 160px;
+  background: #fff;
+  border: 1px solid var(--rx-border);
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(44, 138, 155, 0.14);
+  z-index: 999;
+  overflow: hidden;
+}
+
+/* DROPDOWN ITEMS */
+.dropdown-item {
+  padding: 12px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: var(--rx-navy);
+}
+
+.dropdown-item:hover {
+  background: var(--rx-hover-bg);
+  color: var(--rx-teal-deep);
+}
+
+/* LOGOUT STYLE */
+.dropdown-item.logout {
+  color: #ff4d4f;
+}
+
+.dropdown-item.logout:hover {
+  background: #fff1f0;
+}
+.admin-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--rx-navy);
+}
+
+.admin-role {
+  font-size: 12px;
+  color: var(--rx-muted);
+}
+
+.menu-item + .menu-item {
+  margin-top: 8px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-bottom: 28px;
+  min-height: 40px;
+}
+
+.logo-text {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: clamp(1.65rem, 2.4vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.logo-rx {
+  color: #4caf6e;
+}
+
+.logo-intel {
+  color: #2f6fe0;
+}
+
+.logo-collapsed-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.logo-collapsed-mark {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
+}
+
+.logo-hamburger {
+  margin-left: auto;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.logo-hamburger-bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 999px;
+  background: #1a2b48;
+}
+
+.logo-hamburger:hover {
+  background: var(--rx-hover-bg);
+}
+
+.logo-hamburger:hover .logo-hamburger-bar {
+  background: #2f6fe0;
+}
+
+.sidebar-mobile-close {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: auto;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #4b5563;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 20px 20px 0;
+  background: var(--rx-page-bg);
+  box-sizing: border-box;
+}
+
+.main-content-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 12px;
+  scrollbar-gutter: stable;
+  scrollbar-width: auto;
+  scrollbar-color: #b7c9c6 transparent;
+}
+
+.main-content-scroll::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.main-content-scroll::-webkit-scrollbar-track {
+  background: #f1f3f5;
+}
+
+.main-content-scroll::-webkit-scrollbar-thumb {
+  background-color: #c5ced9;
+  border-radius: 999px;
+}
+
+.main-content-scroll:hover::-webkit-scrollbar-thumb {
+  background-color: #a2afc1;
+}
+
+.main-content-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #97a6ba;
+}
+
+/* Remove scrollbar and gutter for ERx Audit screen */
+.main-content.main-content--no-scrollbar {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  scrollbar-gutter: auto !important;
+  padding: 10px 16px !important;
+}
+
+.main-content.main-content--no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.sidebar {
+  width: 240px;
+  transition: all 0.3s ease;
+}
+
+/* OPEN STATE (default) */
+.sidebar.open {
+  width: 240px;
+}
+
+/* COLLAPSED STATE */
+.sidebar.collapsed {
+  width: 70px;
+  padding: 20px 8px;
+}
+
+.sidebar.collapsed .menu-text,
+.sidebar.collapsed .submenu-label {
+  display: none;
+}
+
+.sidebar.collapsed .logo {
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.sidebar.collapsed .logo-text,
+.sidebar.collapsed .logo-hamburger {
+  display: none;
+}
+
+.sidebar.collapsed .logo-collapsed-btn {
+  display: inline-flex;
+}
+
+.sidebar.collapsed .menu-item {
+  justify-content: center;
+}
+
+.sidebar.collapsed .menu-item.has-dropdown {
+  position: relative;
+}
+
+.sidebar.collapsed .menu-item.has-dropdown .menu-dropdown-arrow {
+  display: none;
+}
+
+.sidebar.collapsed .menu-item.has-dropdown .menu-toggle-icon {
+  display: none;
+  font-size: 16px;
+  color: #6b7280;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.sidebar.collapsed .menu-item.has-dropdown:hover .menu-primary-icon {
+  display: none;
+}
+
+.sidebar.collapsed .menu-item.has-dropdown:hover .menu-toggle-icon {
+  display: block;
+}
+
+.sidebar.collapsed .menu-item.active,
+.sidebar.collapsed .menu-item.active:hover,
+.sidebar.collapsed .menu-item.active .icon {
+  color: #fff;
+}
+
+.sidebar.collapsed .menu-item.parent-active {
+  background: rgba(61, 111, 229, 0.12);
+  border-left: 3px solid var(--rx-menu-blue);
+  justify-content: center;
+}
+
+.sidebar.collapsed .menu-item.parent-active .icon {
+  color: var(--rx-accent);
+}
+
+.sidebar.collapsed .rxintel-group.open {
+  background: transparent;
+  padding: 0;
+}
+
+.sidebar.collapsed .rxintel-group.open .submenu {
+  padding: 4px 2px 0;
+  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar.collapsed .submenu {
+  padding-left: 0;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar.collapsed .submenu-item {
+  justify-content: center;
+  padding: 8px;
+  gap: 0;
+  border-radius: 8px;
+}
+
+.sidebar.collapsed .rxintel-group.open .submenu-item:hover:not(.active) {
+  background: var(--rx-hover-bg-strong);
+  color: var(--rx-accent);
+}
+
+.sidebar.collapsed .submenu-item.active,
+.sidebar.collapsed .submenu-item.active:hover,
+.sidebar.collapsed .rxintel-group.open .submenu-item.active,
+.sidebar.collapsed .rxintel-group.open .submenu-item.active:hover {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 8px;
+  background: var(--rx-active-gradient);
+  color: #fff;
+}
+
+.sidebar.collapsed .submenu-item.active .submenu-icon,
+.sidebar.collapsed .submenu-item.active:hover .submenu-icon,
+.sidebar.collapsed .rxintel-group.open .submenu-item.active .submenu-icon,
+.sidebar.collapsed .rxintel-group.open .submenu-item.active:hover .submenu-icon,
+.sidebar.collapsed .submenu-item.active svg,
+.sidebar.collapsed .submenu-item.active:hover svg {
+  color: #fff;
+}
+
+.sidebar.collapsed .submenu-icon {
+  font-size: 16px;
+  min-width: 18px;
+}
+
+/* when sidebar collapsed */
+.main-content.full {
+  margin-left: 20px;
+}
+
+.profile-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Mobile/tablet: make sidebar an overlay drawer */
+@media (max-width: 900px) {
+  .layout,
+  .layout--pharmacy {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.42);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 1050;
+  }
+
+  /* !important beats pharmacy glass rules that previously forced position:relative */
+  .layout .sidebar,
+  .layout--pharmacy .sidebar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    height: 100dvh;
+    width: min(280px, 86vw) !important;
+    max-width: 280px;
+    margin: 0;
+    transform: translateX(-105%);
+    transition: transform 0.3s ease;
+    z-index: 1100;
+    box-shadow: 0 10px 28px rgba(17, 24, 39, 0.2);
+    overflow: hidden;
+    flex: none;
+  }
+
+  .layout--pharmacy .sidebar-backdrop {
+    z-index: 1050;
+  }
+
+  .layout .sidebar.open,
+  .layout--pharmacy .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .layout .sidebar.collapsed,
+  .layout--pharmacy .sidebar.collapsed {
+    width: min(280px, 86vw) !important;
+    padding: 20px 15px;
+    transform: translateX(-105%);
+  }
+
+  .sidebar.collapsed .menu-text,
+  .sidebar.collapsed .logo-text,
+  .sidebar.collapsed .submenu-label {
+    display: inline-flex;
+  }
+
+  .sidebar.collapsed .logo-collapsed-btn {
+    display: none;
+  }
+
+  .sidebar.collapsed .logo-hamburger {
+    display: none;
+  }
+
+  .sidebar.collapsed .menu-item {
+    justify-content: flex-start;
+  }
+
+  .sidebar.collapsed .menu-item.has-dropdown .menu-dropdown-arrow {
+    display: inline-flex;
+  }
+
+  .main,
+  .main-content,
+  .layout--pharmacy .main,
+  .layout--pharmacy .main-content {
+    width: 100% !important;
+    max-width: 100%;
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .main-content,
+  .layout--pharmacy .main-content {
+    padding: 12px 10px 0;
+    margin-left: 0 !important;
+  }
+
+  .app-site-footer {
+    margin-left: -10px;
+    margin-right: -10px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .main-content.full {
+    margin-left: 0 !important;
+  }
+
+  .navbar {
+    height: 56px;
+    padding: 0 12px;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .navbar-menu-toggle {
+    display: inline-flex;
+  }
+
+  .logo-hamburger {
+    display: none;
+  }
+
+  .sidebar.open .sidebar-mobile-close {
+    display: inline-flex;
+  }
+
+  .profile {
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .admin-name {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .admin-role {
+    display: none;
+  }
+
+  /* Dashboard / page cards fill the mobile width */
+  .main-content .page-shell,
+  .main-content .page-card {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .main-content .page-card {
+    padding: 14px 12px 12px;
+    border-radius: 14px;
+  }
+}
+
+/* ===== Pharmacy page shell only (does not affect other routes) ===== */
+.layout--pharmacy {
+  position: relative;
+  background-color: #eef6fa;
+  isolation: isolate;
+  letter-spacing: -0.01em;
+}
+
+.layout--pharmacy::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("../../assets/login-background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Medium lightness — between original and very light */
+  opacity: 0.68;
+  filter: brightness(1.08) saturate(0.96);
+  pointer-events: none;
+}
+
+/* Keep shell above the background, but never force sidebar out of fixed/drawer mode */
+.layout--pharmacy > *:not(.sidebar):not(.sidebar-backdrop) {
+  position: relative;
+  z-index: 1;
+}
+
+.layout--pharmacy .main-content {
+  background: transparent;
+}
+
+.layout--pharmacy .main {
+  background: transparent;
+}
+
+.layout--pharmacy .navbar {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+  box-shadow: none;
+}
+
+.layout--pharmacy .nav-right {
+  gap: 16px;
+}
+
+.layout--pharmacy .profile-chevron {
+  margin-left: 2px;
+  color: var(--rx-muted);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.layout--pharmacy .admin-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #12233f;
+}
+
+.layout--pharmacy .admin-role {
+  font-size: 13px;
+  color: #5b6777;
+}
+
+.layout--pharmacy .profile-avatar,
+.layout--pharmacy .profile svg {
+  width: 42px !important;
+  height: 42px !important;
+}
+
+/* Glass / transparent left menu (pharmacy only) */
+.layout--pharmacy .sidebar {
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid rgba(255, 255, 255, 0.55);
+  box-shadow: none;
+}
+
+/* Hover on non-selected items only — keep active gradient + white text */
+.layout--pharmacy .sidebar .menu-item:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--rx-accent);
+}
+
+.layout--pharmacy .sidebar .menu-item.active:hover {
+  background: var(--rx-active-gradient-hover);
+  color: #fff;
+}
+
+.layout--pharmacy .sidebar .menu-item.active:hover .icon,
+.layout--pharmacy .sidebar .menu-item.active:hover .dropdown-arrow-icon {
+  color: #fff;
+}
+
+.layout--pharmacy .sidebar .menu-item.parent-active {
+  background: rgba(238, 243, 255, 0.72);
+}
+
+.layout--pharmacy .sidebar .menu-item.parent-active:hover {
+  background: rgba(238, 243, 255, 0.9);
+  color: var(--rx-accent);
+}
+
+.layout--pharmacy .sidebar .submenu {
+  border-left-color: rgba(215, 222, 232, 0.65);
+}
+
+.layout--pharmacy .sidebar .submenu-item:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--rx-accent);
+}
+
+.layout--pharmacy .sidebar .submenu-item.active:hover {
+  background: var(--rx-active-gradient-hover);
+  color: #fff;
+}
+
+.app-site-footer {
+  flex-shrink: 0;
+  margin-top: 0;
+  margin-left: -20px;
+  margin-right: -20px;
+  padding: 14px 25px 16px;
+  border-top: 1px solid var(--rx-border);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    var(--rx-page-bg) 100%
+  );
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--rx-muted);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem 0.25rem;
+}
+
+.app-site-footer a {
+  color: var(--rx-navy);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.app-site-footer a:hover {
+  color: var(--rx-accent);
+  text-decoration: underline;
+}
+
+.app-site-footer-sep {
+  color: var(--rx-border);
+  margin: 0 0.05rem;
+  line-height: 1;
+}

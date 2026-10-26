@@ -1,0 +1,168 @@
+/* Billing Field Mapping — shared shell/table in styles/pageCardTheme.css */
+
+.bfm-top-toolbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.bfm-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Modal shell: styles/modalTheme.css */
+
+.bfm-modal-form--edit {
+  width: 1020px;
+  max-width: calc(100vw - 48px);
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.bfm-modal-form--edit .bfm-modal-header {
+  margin-bottom: 24px;
+}
+
+.bfm-modal-form--edit .bfm-modal-header h2.common-header {
+  margin: 0;
+  line-height: 1.25;
+  color: #1a2b48;
+  font-weight: 700;
+}
+
+.bfm-modal-form--edit .bfm-modal-body {
+  margin-bottom: 0;
+}
+
+.bfm-modal-form--edit .bfm-modal-body--edit-scroll {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: min(520px, calc(90vh - 220px));
+  overflow-y: auto;
+  margin-bottom: 0;
+  padding-right: 4px;
+}
+
+.bfm-modal-form--edit .bfm-modal-body--edit-scroll .table-wrapper {
+  overflow: visible;
+  max-height: none;
+}
+
+.bfm-modal-form--edit .bfm-edit-footer {
+  border-top: 1px solid #eaecf0;
+  padding: 12px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.bfm-modal-form--edit .bfm-edit-footer .bfm-modal-actions {
+  margin-top: 0;
+  width: 100%;
+}
+
+.bfm-edit-error-message {
+  margin: 0 auto 0 0;
+  color: #c0392b;
+  font-size: 13px;
+  line-height: 1.35;
+  text-align: left;
+}
+
+.bfm-edit-loading {
+  margin: 24px 0;
+  text-align: center;
+  color: #7d8a99;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.bfm-required-star {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.bfm-modal-form--edit .custom-table {
+  font-size: 13px;
+}
+
+.bfm-modal-form--edit .custom-table th {
+  padding: 8px 10px;
+}
+
+.bfm-modal-form--edit .custom-table td {
+  padding: 6px 10px;
+  line-height: 1.35;
+  vertical-align: middle;
+}
+
+.bfm-modal-form--edit .bfm-destination-select {
+  min-width: 160px;
+}
+
+.bfm-destination-select {
+  width: 100%;
+  min-width: 200px;
+  height: 32px;
+  min-height: 32px;
+  max-height: 32px;
+  padding: 0 32px 0 8px;
+  border: 1px solid #d0d5dd;
+  border-radius: 4px;
+  background-color: #fff;
+  background-image: none;
+  font-size: 13px;
+  line-height: 1.35;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.bfm-upload-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bfm-upload-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #344054;
+}
+
+.bfm-upload-input {
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  padding: 8px;
+  background: #fff;
+}
+
+.bfm-upload-file-name {
+  font-size: 12px;
+  color: #667085;
+}
+
+@media (max-width: 900px) {
+  .bfm-header-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .bfm-modal-form,
+  .bfm-modal-form--edit {
+    width: 100%;
+    max-width: calc(100vw - 24px);
+    padding: 16px;
+  }
+
+  .bfm-modal-actions {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,169 @@
+.table-scroll-shell {
+  max-height: calc(100vh - 280px);
+}
+
+.table-wrapper {
+  scrollbar-width: auto;
+  scrollbar-color: #c5ced9 transparent;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #f1f3f5;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background-color: #c5ced9;
+  border-radius: 999px;
+}
+
+.table-wrapper:hover::-webkit-scrollbar-thumb {
+  background-color: #a2afc1;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background-color: #97a6ba;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+}
+
+/* Header */
+.custom-table thead {
+  background: #f4f6f9;
+}
+
+.custom-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  text-align: left;
+  padding: 12px;
+  font-weight: 700;
+  color: #12233f;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f4f6f9;
+}
+
+/* Body */
+.custom-table td {
+  padding: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  font-weight: 500;
+  font-size: 13px;
+  color: #0f172a;
+}
+
+.cell-empty {
+  color: #98a2b3;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+/* Actions column */
+.actions-cell {
+  white-space: nowrap;
+}
+
+.actions-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-tooltip-wrap {
+  display: inline-flex;
+  line-height: 0;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+  flex-shrink: 0;
+  line-height: 0;
+  box-sizing: border-box;
+  outline: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.action-btn svg {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.action-btn:hover:not(:disabled) {
+  border-color: #d0d5dd;
+}
+
+.action-btn--edit:hover:not(:disabled) {
+  background: #eef4ff;
+  border-color: #c7d7fe;
+}
+
+.action-btn--delete:hover:not(:disabled) {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.action-btn--more:hover:not(:disabled) {
+  background: #f9fafb;
+  border-color: #d0d5dd;
+}
+
+.action-btn:focus-visible {
+  border-color: #98a2b3;
+}
+
+.action-btn--edit {
+  color: #163372;
+}
+
+.action-btn--delete {
+  color: #ef4444;
+}
+
+.action-btn--delete .delete-trash-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.action-btn--more {
+  color: #667085;
+}
+
+.action-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Row hover */
+.custom-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* No data */
+.no-data {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+}

@@ -1,0 +1,121 @@
+/* COMMON HEADER */
+.common-header {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* COMMON BUTTON BASE */
+.common-btn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease; /* ✅ smooth hover */
+}
+
+/* PRIMARY BUTTON (SAVE) */
+.common-btn.primary {
+  background-color: #1d5b91;
+  color: #fff;
+}
+
+/* PRIMARY HOVER */
+.common-btn.primary:hover {
+  background-color: #6590b4;
+}
+
+/* SECONDARY BUTTON (RESET) */
+.common-btn.secondary {
+  background-color: #e0e0e0;
+  color: #030303;
+}
+
+/* SECONDARY HOVER */
+.common-btn.secondary:hover {
+  background-color: #a29b9b;
+}
+
+/* DISABLED STATE */
+.common-btn.disabled {
+  background-color: #7b9dbb;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.status {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: default;
+}
+
+.status.active {
+  background: #d4f3e3;
+  color: #073a1a;
+}
+
+.status.inactive {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Filter toggle: unselected = plain text look (Pharmacy Active/Inactive) */
+.status-filter-plain {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  background: #fff;
+  color: #555;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.status-filter-plain:hover:not(:disabled) {
+  background: #f7f7f7;
+}
+
+.status-filter-plain.disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* BACK BUTTON */
+.common-btn.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  margin: -4px 0 0 -10px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1d2939;
+  border-radius: 8px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.common-btn.back:hover:not(:disabled) {
+  background-color: rgba(29, 91, 145, 0.08);
+  color: #1d5b91;
+}
+
+.common-btn.back.disabled {
+  background: transparent;
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.common-btn-back-arrow {
+  display: inline-flex;
+  align-items: center;
+  font-size: 1.05rem;
+  line-height: 1;
+}

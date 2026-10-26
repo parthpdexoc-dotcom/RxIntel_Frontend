@@ -1,0 +1,183 @@
+.report-date-range-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  font-size: 13px;
+  border: 1px solid #cfd8e3;
+  border-radius: 12px;
+  background: #fff;
+  color: #101828;
+  white-space: nowrap;
+  cursor: pointer;
+  font-family: inherit;
+  line-height: 1.2;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.report-date-range-trigger:hover {
+  border-color: #98a2b3;
+}
+
+.report-date-range-trigger:focus-visible {
+  outline: none;
+  border-color: #2c8a9b;
+  box-shadow: 0 0 0 3px rgba(44, 138, 155, 0.18);
+}
+
+.report-date-range-trigger.is-open {
+  border-color: #2f9f6e;
+  box-shadow: 0 0 0 3px rgba(47, 159, 110, 0.18);
+}
+
+.report-date-range-prefix {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: auto;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.report-date-range-prefix--billing {
+  background: #e0f2f5;
+  color: #2c8a9b;
+  border: 1px solid #b5dce3;
+}
+
+.report-date-range-prefix--purchase {
+  background: #e8f8ef;
+  color: #0f5132;
+  border: 1px solid #b7e4cd;
+}
+
+.report-date-range-trigger-icon {
+  font-size: 18px !important;
+  color: #667085;
+}
+
+.report-date-range-trigger-placeholder {
+  color: #98a2b3;
+}
+
+.report-date-range-panel {
+  margin-top: 8px !important;
+  border-radius: 12px !important;
+  border: 1px solid #e4e7ec !important;
+  box-shadow: 0 12px 32px rgba(16, 24, 40, 0.12) !important;
+  overflow: hidden;
+}
+
+.report-date-range-content {
+  display: flex;
+  align-items: stretch;
+  background: #fff;
+}
+
+.report-date-range-column,
+.report-date-range-presets {
+  padding: 16px 12px 12px;
+}
+
+.report-date-range-column {
+  flex: 0 0 auto;
+}
+
+.report-date-range-presets {
+  min-width: 148px;
+  padding-right: 16px;
+}
+
+.report-date-range-heading {
+  margin: 0 0 8px;
+  padding: 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #101828;
+}
+
+.report-date-range-divider {
+  width: 1px;
+  background: #e4e7ec;
+  flex-shrink: 0;
+}
+
+.report-date-range-calendar {
+  width: 280px;
+}
+
+.report-date-range-calendar .MuiPickersCalendarHeader-root {
+  margin-top: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.report-date-range-calendar .MuiDayCalendar-header {
+  justify-content: space-around;
+}
+
+.report-date-range-calendar .MuiPickersDay-root.Mui-selected {
+  background-color: #2f9f6e !important;
+  color: #fff !important;
+}
+
+.report-date-range-calendar .MuiPickersDay-root.Mui-selected:hover,
+.report-date-range-calendar .MuiPickersDay-root.Mui-selected:focus {
+  background-color: #37ab79 !important;
+}
+
+.report-date-range-calendar .MuiPickersDay-root:hover {
+  background-color: #f2f4f7;
+}
+
+.report-date-range-preset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.report-date-range-preset-btn {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #344054;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.report-date-range-preset-btn:hover {
+  background: #f2f4f7;
+  color: #101828;
+}
+
+@media (max-width: 900px) {
+  .report-date-range-content {
+    flex-direction: column;
+  }
+
+  .report-date-range-divider {
+    width: auto;
+    height: 1px;
+  }
+
+  .report-date-range-calendar {
+    width: 100%;
+    max-width: 320px;
+  }
+}

@@ -1,0 +1,11 @@
+.purchase-batches {
+  width: 100%;
+  min-width: 0;
+}
+
+.purchase-batch-detail-top {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 16px 0;
+  gap: 4px;
+}

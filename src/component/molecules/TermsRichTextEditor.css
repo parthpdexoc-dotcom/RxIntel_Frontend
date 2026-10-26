@@ -1,0 +1,110 @@
+.terms-rich-editor {
+  border: 1px solid rgba(26, 82, 118, 0.2);
+  border-radius: 8px;
+  overflow: visible;
+  background: #fff;
+}
+
+.terms-rich-editor .quill {
+  height: auto;
+}
+
+.terms-rich-editor .ql-toolbar.ql-snow {
+  position: sticky;
+  top: 0;
+  z-index: 6;
+  border: none;
+  border-bottom: 1px solid rgba(26, 82, 118, 0.12);
+  background: #f8fafb;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 2px 6px rgba(26, 82, 118, 0.06);
+  font-family: "Plus Jakarta Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+}
+
+.terms-rich-editor .ql-container.ql-snow {
+  border: none;
+  border-radius: 0 0 8px 8px;
+  font-family: "Plus Jakarta Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  font-size: 0.9375rem;
+  height: auto;
+  overflow: visible;
+}
+
+.terms-rich-editor .ql-editor {
+  min-height: 280px;
+  height: auto;
+  overflow: visible;
+  line-height: 1.65;
+  color: #2c3e50;
+}
+
+.terms-rich-editor .ql-editor h2,
+.terms-rich-editor .ql-editor h3 {
+  color: #000;
+  font-weight: 700;
+  line-height: 1.35;
+  margin: 1rem 0 0.5rem;
+}
+
+.terms-rich-editor .ql-editor h2 {
+  font-size: 1.2rem;
+}
+
+.terms-rich-editor .ql-editor h3 {
+  font-size: 1.05rem;
+}
+
+.terms-rich-editor .ql-picker.ql-header .ql-picker-label::before,
+.terms-rich-editor .ql-picker.ql-header .ql-picker-item::before {
+  color: #2c3e50;
+  font-weight: 400;
+}
+
+.terms-rich-editor .ql-picker.ql-header .ql-picker-label[data-value="2"]::before,
+.terms-rich-editor .ql-picker.ql-header .ql-picker-label[data-value="3"]::before,
+.terms-rich-editor .ql-picker.ql-header .ql-picker-item[data-value="2"]::before,
+.terms-rich-editor .ql-picker.ql-header .ql-picker-item[data-value="3"]::before {
+  color: #000;
+  font-weight: 700;
+}
+
+.terms-rich-editor .ql-picker.ql-header .ql-picker-item[data-value="2"]::before {
+  font-size: 1.2rem;
+}
+
+.terms-rich-editor .ql-picker.ql-header .ql-picker-item[data-value="3"]::before {
+  font-size: 1.05rem;
+}
+
+.terms-rich-editor .ql-editor p {
+  margin: 0 0 0.75rem;
+  font-weight: 400;
+}
+
+/* Align bullet/numbered lists with paragraph text (no extra tab inset). */
+.terms-rich-editor .ql-editor ol,
+.terms-rich-editor .ql-editor ul {
+  padding-left: 0;
+  margin: 0 0 0.75rem;
+}
+
+.terms-rich-editor .ql-editor ol > li,
+.terms-rich-editor .ql-editor ul > li {
+  padding-left: 1.35em;
+}
+
+.terms-rich-editor .ql-editor li:not(.ql-direction-rtl)::before {
+  margin-left: -1.35em;
+  margin-right: 0.25em;
+  width: 1.1em;
+  text-align: right;
+}
+
+.terms-app-scroll .terms-rich-editor .ql-toolbar.ql-snow {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  box-shadow: 0 2px 8px rgba(26, 82, 118, 0.1);
+}

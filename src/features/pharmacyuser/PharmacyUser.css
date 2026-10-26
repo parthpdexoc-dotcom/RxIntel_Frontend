@@ -1,0 +1,116 @@
+/* Pharmacy User-specific — shared shell/table in styles/pageCardTheme.css */
+
+.pu-top-toolbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.pu-status-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.pharmacyuser-page .pu-status-toggle button {
+  margin-left: 0 !important;
+  border-radius: 999px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  min-height: 36px;
+  padding: 8px 18px;
+}
+
+.pharmacyuser-page .pu-status-toggle .common-btn.status.active {
+  background: #d4f3e3;
+  color: #0f5132;
+  border: 1px solid #b7e4cd !important;
+  cursor: pointer;
+}
+
+.pharmacyuser-page .pu-status-toggle .common-btn.status.inactive {
+  background: #fee2e2;
+  color: #b42318;
+  border: 1px solid #fecaca !important;
+  cursor: pointer;
+}
+
+.pharmacyuser-page .pu-status-toggle .status-filter-plain {
+  background: #fff;
+  border: 1px solid #c5ced9 !important;
+  color: #12233f;
+}
+
+.pu-banner {
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #fff8e6;
+  border: 1px solid #f5d78e;
+  color: #7a5c00;
+  font-size: 14px;
+}
+
+/* Modal shell: styles/modalTheme.css */
+
+/* Pharmacy User modal: 3 columns per row (matches Pharmacy modal) */
+.pharmacyuser-modal-fields-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 14px;
+  row-gap: 11px;
+}
+
+.pharmacyuser-modal-form .form-field label {
+  display: inline-block;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.pharmacyuser-modal-form .form-field-custom-select-trigger {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* GRID */
+.pharmacyuser-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 14px;
+  row-gap: 11px;
+}
+
+.pharmacyuser-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 14px;
+  row-gap: 11px;
+}
+
+.pharmacyuser-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 14px;
+  row-gap: 11px;
+}
+
+.pharmacyuser-full {
+  margin-top: 10px;
+}
+
+.error-text {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.error-input {
+  border: 1px solid #e74c3c !important;
+  outline: none;
+}
