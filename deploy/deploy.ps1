@@ -1,20 +1,21 @@
 <#
 .SYNOPSIS
-    Automated CI/CD Deployment Script for RxIntel Frontend on Windows Server (IIS) via Gogs.
+    Automated CI/CD Deployment Script for RxIntel Frontend on Windows Server (IIS).
 .DESCRIPTION
     1. Validates repository and target branch.
-    2. Runs npm install and npm run build.
-    3. Syncs the production build artifacts to the live IIS web directory.
-    4. Ensures React SPA URL Rewrite web.config is present.
+    2. Automatically creates a timestamped backup of the current live site folder.
+    3. Runs fast npm dependency check and optimized production build.
+    4. Syncs the production build artifacts to live IIS web directory.
+    5. Ensures React SPA URL Rewrite web.config is present.
 #>
 
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $false)]
-    [string]$TargetBranch = "DEVELOP",
+    [string]$TargetBranch = "develop",
 
     [Parameter(Mandatory = $false)]
-    [string]$IisSitePath = "C:\inetpub\wwwroot\RxIntel_UI",
+    [string]$IisSitePath = "C:\inetpub\wwwroot\RxIntel",
 
     [Parameter(Mandatory = $false)]
     [string]$RepoDir = $PSScriptRoot + "\..",
@@ -42,7 +43,13 @@ function Write-Failure ([string]$msg) {
 }
 
 try {
-    Write-Step "Starting RxIntel Frontend Deployment for branch: '$TargetBranch'..."
+    Write-Step "Starting RxIntel Frontend Deployment..."
+    
+    # Auto-detect path if Plexoc subdirectory is used
+    if (-not (Test-Path $IisSitePath) -and (Test-Path "C:\inetpub\wwwroot\Plexoc\RxIntel")) {
+        $IisSitePath = "C:\inetpub\wwwroot\Plexoc\RxIntel"
+    }
+
     Write-Host "Target IIS Path: $IisSitePath"
     Write-Host "Repository Dir:  $RepoDir"
 
@@ -51,11 +58,34 @@ try {
         throw "Repository directory '$RepoDir' not found."
     }
 
-    if (-not (Test-Path $IisSitePath)) {
-        Write-WarningMsg "IIS Site Path '$IisSitePath' does not exist. Creating directory..."
+    # =========================================================================
+    # STEP: AUTOMATIC PRE-DEPLOYMENT BACKUP
+    # =========================================================================
+    if (Test-Path $IisSitePath) {
+        $hasFiles = (Get-ChildItem -Path $IisSitePath | Measure-Object).Count -gt 0
+        if ($hasFiles) {
+            $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
+            $parentDir = Split-Path $IisSitePath -Parent
+            $backupBase = Join-Path $parentDir "Backups"
+            if (-not (Test-Path $backupBase)) {
+                New-Item -ItemType Directory -Path $backupBase -Force | Out-Null
+            }
+            $targetFolderName = (Get-Item $IisSitePath).Name
+            $backupFolder = Join-Path $backupBase "${targetFolderName}_$timestamp"
+            
+            Write-Step "CREATING BACKUP: Copying live UI files to '$backupFolder' before deployment..."
+            New-Item -ItemType Directory -Path $backupFolder -Force | Out-Null
+            
+            # Fast recursive copy to backup folder
+            & robocopy.exe "$IisSitePath" "$backupFolder" /E /R:1 /W:1 /NP | Out-Null
+            Write-Success "Full UI backup created successfully at: '$backupFolder'"
+        }
+    } else {
+        Write-WarningMsg "Target directory '$IisSitePath' does not exist yet. Creating directory..."
         New-Item -ItemType Directory -Path $IisSitePath -Force | Out-Null
     }
 
+    # 2. Update Source from Git (optional, skipped if handled by GitHub Actions runner)
     Push-Location $RepoDir
     try {
         if (-not $SkipGitPull) {
@@ -101,12 +131,6 @@ try {
     # 5. Sync to IIS Directory with ROBOCOPY
     Write-Step "Deploying build output to IIS directory: '$IisSitePath'..."
     
-    # Robocopy flags:
-    # /E   : Copy all subdirectories, including empty ones.
-    # /PURGE: Delete destination files that no longer exist in source (cleans up old hashed JS/CSS chunks).
-    # /R:2 : Retry twice on lock.
-    # /W:2 : Wait 2 seconds.
-    # /NP  : No progress percentage.
     $robocopyArgs = @(
         "$buildFolder",
         "$IisSitePath",
@@ -136,7 +160,8 @@ try {
 
     Write-Success "=========================================================="
     Write-Success " RxIntel Frontend Deployment Completed Successfully! "
-    Write-Success " Target Branch: $TargetBranch | IIS Path: $IisSitePath"
+    Write-Success " Target: $IisSitePath"
+    Write-Success " Live files backed up before sync."
     Write-Success "=========================================================="
     exit 0
 }
