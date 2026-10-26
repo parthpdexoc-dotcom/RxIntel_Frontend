@@ -75,6 +75,7 @@ try {
 
         # 4. Build Production Bundle
         Write-Step "Building React production bundle (npm run build)..."
+        $env:CI = "false"
         $env:NODE_ENV = "production"
         $env:GENERATE_SOURCEMAP = "false"
         cmd.exe /c "npm run build"

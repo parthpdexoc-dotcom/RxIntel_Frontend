@@ -17,4 +17,6 @@ jobs:
 
       - name: Execute Deployment
         shell: powershell
+        env:
+          CI: false
         run: .\deploy\deploy.ps1 -SkipGitPull
